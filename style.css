@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #e50914;
+    --dark-color: #141414;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*Video*/
+.video {
+    width: 100vw;
+    height: 100vh;
+    position:  fixed;
+    top: 0;
+    left: 0;
+    z-index:  -1;
+}
+
+.video video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
+/*App*/
+.app {
+    display: grid;
+    grid-template-areas: 
+    "a a a a s s"
+    "a a a a s s"
+    "d d d d s s"
+    "d d d d s s";
+    width: 100vw;
+    height: 100vh;
+}
+
+/*Audio*/
+.audio {
+    grid-area:  a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio img {
+    width: 50px;
+    cursor: pointer;
+}
+
+.audio .progress {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 0 40px;
+}
+
+.audio .progress svg {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    transform: rotate(45deg);
+}
+
+.audio .progress .audio-remaining-time {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:  #fff;
+    font-size:  2rem;
+    font-weight:  bold;
+}
+
+/*Duration*/
+
+.durations {
+    grid-area:  d;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 25%;
+} 
+
+.durations .duration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.durations .duration img {
+    width: 75px;
+    cursor: pointer;
+    filter:  drop-shadow(0 0 15px #222);
+}
+
+.durations .duration p {
+    font-size:  1.1rem;
+    font-weight:  bold;
+    color:  #fff;
+    margin-top: 5px;
+    text-shadow:  0 0 15px #222;
+}
+
+/*Seasons*/
+.seasons {
+    grid-area:  s;
+    background-color:  blue;
+    opacity:  .5;
+}
+
+@media screen and (max-width: 600px) {
+    /*Video*/
+    .video video {
+        height: 100%;
+    }
+
+    /*Audio*/
+    .audio .progress {
+    width: 175px;
+    height: 175px;
+    margin: 0 10px;
+}
+
+.audio .play img,
+.audio .pause img {
+    width: 40px;
+}
+
+.audio .progress svg {
+    width: 175px;
+    height: 175px;
+}
+
+.audio .progress .rect1,
+.rect {
+    width: 125px;
+    height: 125px;
+}
+
+.audio .progress .audio-remaining-time {
+    font-size:  1.75rem;
+}
+
+
+/*Duration*/
+.durations {
+    padding: 0 10%;
+}
+
+.durations .duration img {
+    width: 60px
+}
+
+.durations .duration p {
+    font-size:  1rem;
+}
+}
+
