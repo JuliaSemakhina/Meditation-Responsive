@@ -22,17 +22,17 @@ body {
 .video {
     width: 100vw;
     height: 100vh;
-    position:  fixed;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index:  -1;
+    z-index: -1;
 }
 
 .video video {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform:  translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
 }
@@ -41,18 +41,24 @@ body {
 /*App*/
 .app {
     display: grid;
-    grid-template-areas: 
-    "a a a a s s"
-    "a a a a s s"
-    "d d d d s s"
-    "d d d d s s";
+    grid-template-areas:
+        "a a a a s s"
+        "a a a a s s"
+        "d d d d s s"
+        "d d d d s s";
     width: 100vw;
     height: 100vh;
+    top: auto;
+    transition: opacity 500ms ease-in-out;
+}
+
+.inactive {
+    opacity: 0;
 }
 
 /*Audio*/
 .audio {
-    grid-area:  a;
+    grid-area: a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,6 +81,7 @@ body {
     height: 200px;
     position: absolute;
     transform: rotate(45deg);
+    z-index: -1;
 }
 
 .audio .progress .audio-remaining-time {
@@ -82,20 +89,20 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color:  #fff;
-    font-size:  2rem;
-    font-weight:  bold;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 /*Duration*/
 
 .durations {
-    grid-area:  d;
+    grid-area: d;
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 0 25%;
-} 
+}
 
 .durations .duration {
     display: flex;
@@ -106,69 +113,142 @@ body {
 .durations .duration img {
     width: 75px;
     cursor: pointer;
-    filter:  drop-shadow(0 0 15px #222);
+    filter: drop-shadow(0 0 15px #222);
 }
 
 .durations .duration p {
-    font-size:  1.1rem;
-    font-weight:  bold;
-    color:  #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
     margin-top: 5px;
-    text-shadow:  0 0 15px #222;
+    text-shadow: 0 0 15px #222;
 }
 
 /*Seasons*/
 .seasons {
-    grid-area:  s;
-    background-color:  blue;
-    opacity:  .5;
+    grid-area: s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40% 0;
+}
+
+
+.seasons .season img {
+    width: 75px;
+    filter: drop-shadow(0 0 15px #222);
+    cursor: pointer;
+}
+
+/*Toggle menu */
+.toggle-menu {
+    display: none;
 }
 
 @media screen and (max-width: 600px) {
+
     /*Video*/
     .video video {
         height: 100%;
     }
 
+    /*App*/
+    .app {
+        grid-template-areas:
+            "a"
+            "a"
+            "a"
+            "d";
+    }
+
     /*Audio*/
     .audio .progress {
-    width: 175px;
-    height: 175px;
-    margin: 0 10px;
-}
+        width: 175px;
+        height: 175px;
+        margin: 0 10px;
+    }
 
-.audio .play img,
-.audio .pause img {
-    width: 40px;
-}
+    .audio .play img,
+    .audio .pause img {
+        width: 40px;
+    }
 
-.audio .progress svg {
-    width: 175px;
-    height: 175px;
-}
+    .audio .progress svg {
+        width: 175px;
+        height: 175px;
+    }
 
-.audio .progress .rect1,
-.rect {
-    width: 125px;
-    height: 125px;
-}
+    .audio .progress .rect1,
+    .rect {
+        width: 125px;
+        height: 125px;
+    }
 
-.audio .progress .audio-remaining-time {
-    font-size:  1.75rem;
-}
+    .audio .progress .audio-remaining-time {
+        font-size: 1.75rem;
+    }
 
 
-/*Duration*/
-.durations {
-    padding: 0 10%;
-}
+    /*Duration*/
+    .durations {
+        padding: 0 10%;
+    }
 
-.durations .duration img {
-    width: 60px
-}
+    .durations .duration img {
+        width: 60px
+    }
 
-.durations .duration p {
-    font-size:  1rem;
-}
-}
+    .durations .duration p {
+        font-size: 1rem;
+    }
 
+    /*Seasons*/
+    .seasons {
+        position: absolute;
+        top: 20px;
+        left: -250px;
+        padding: 5px;
+        flex-direction: row;
+        background-color: #fff;
+        border-radius: 0 5px 5px 0;
+        transition: left 500ms ease-in-out;
+    }
+
+    .open {
+        left: 0;
+    }
+
+    .seasons .season {
+        margin-left: 10px;
+    }
+
+    .seasons .season img {
+        width: 50px;
+        filter: none;
+    }
+
+    /*Toggle menu button*/
+    .toggle-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin-left: 10px;
+        border-radius: : 50%;
+        transition: all 500ms ease-in-out;
+    }
+
+    .rotate {
+        transform: rotate(180deg);
+    }
+
+    .toggle-menu:hover {
+        background-color: rgba(0, 0, 0, .2);
+        cursor: pointer;
+    }
+
+    .toggle-menu img {
+        width: 20px;
+    }
+}
